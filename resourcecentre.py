@@ -49,14 +49,27 @@ class ResourceCenter:
                 print("==============================================")
                 print("Add an item")
                 print("==============================================")
+                self.printHeader("Add an item")
+                self.perimeter("Loan an item")
+                self.perimeter("Return an item")
                 
                 # Refactor (B): Extract duplicate codes to selectItemType(),
+                def printHeader(self,message):
+                    print("")
+                    print("=========================================")
+                    print(message)
+                    print("===========================================")
+                    self.printHeader ("Add an item")
+
                 # return the option selected.
                 # Advance refactoring: error chekcing in selectItemType().
-                print("\nItem types:")
-                print("1. Digital Camera")
-                print("2. Laptop")
-                option = int(input("Enter option to select item type >"))
+                def selectItemType(self):
+                    print("\nItem types:")
+                    print("1. Digital Camera")
+                    print("2. Laptop")
+                    return int(input("Enter option to select item type >"))
+                option = self.selectItemType()
+            
 
                 # TO-DO: Write the code to ADD a camcorder or chrome book.
                 if option == OPTION_CAMERA:
