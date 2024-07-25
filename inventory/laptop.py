@@ -13,3 +13,9 @@ class Laptop(item):
     def __str__(self):
         return super().__str__() \
             + "{:<10}\n".format(self.getOS())
+
+    def __str__(self):
+        return "{:<10}{:<30}{:<10}{:<12}{:<10}\n".format(
+                        self.getAssetTag(), self.getDescription() , 
+                        self.getIsAvailable(), self.getDueDate(), 
+                        self.getOS() )
