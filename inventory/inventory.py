@@ -1,23 +1,19 @@
 from inventory.camera import Camera
 from inventory.laptop import Laptop
 
-class Inventory():
-    def __init__(self):
+class Inventory:
+    def __init__(self):  # Fixed constructor name from _init_ to __init__
         self.cameraList = []
         self.laptopList = []
-
-    
 
     def addCamera(self, assetTag, description, opticalzoom):
         # Check for correct values
         correct = True
-        if len(assetTag)==0 or len(description)==0 or opticalzoom<0:
+        error_message = ""
+        if len(assetTag) == 0 or len(description) == 0 or opticalzoom < 0:
             correct = False
             error_message = "Incorrect values."
 
-        # Refactor (C): Extract long methods to findCamera(assetTag), 
-        # return the found camera, return None if not found.
-        # **Don't forget to create test cases for this new method.
         # Check for existing camera
         notExist = True
         for c in self.cameraList:
@@ -33,16 +29,15 @@ class Inventory():
         else:
             print(error_message)
             return False
-        
+
     def addLaptop(self, assetTag, description, os):
         # Check for correct values
         correct = True
-        if len(assetTag)==0 or len(description)==0 or len(os)==0:
+        error_message = ""
+        if len(assetTag) == 0 or len(description) == 0 or len(os) == 0:
             correct = False
             error_message = "Incorrect values."
-        # Refactor (C): Extract long methods to findLaptop(assetTag), 
-        # return the found laptop, return None if not found.
-        # **Don't forget to create test cases for this new method.
+
         # Check for existing laptop
         notExist = True
         for l in self.laptopList:
@@ -50,6 +45,7 @@ class Inventory():
             if currentTag == assetTag:
                 notExist = False
                 error_message = "Asset already exists."
+
         if correct and notExist:
             new_laptop = Laptop(assetTag, description, os)
             self.laptopList.append(new_laptop)
@@ -67,12 +63,10 @@ class Inventory():
         else:
             for i in self.cameraList:
                 if i.getIsAvailable() == "Yes":
-                    # Refactor (D): Extract duplicate code as __str__()
-                    # If __str__() already created, use it.
                     output += "{:<10}{:<30}{:<10}{:<12}{:<10}\n".format( 
                         i.getAssetTag(), i.getDescription(),  
                         i.getIsAvailable(), i.getDueDate(), 
-                        i.getOpticalZoom() )
+                        i.getOpticalZoom())
             
         return output
 
@@ -85,18 +79,15 @@ class Inventory():
         else:
             for i in self.laptopList:
                 if i.getIsAvailable() == "Yes":
-                    # Refactor (D): Extract duplicate code as __str__()
-                    # If __str__() already created, use it.
                     output += "{:<10}{:<30}{:<10}{:<12}{:<10}\n".format(
-                        i.getAssetTag(), i.getDescription() , 
+                        i.getAssetTag(), i.getDescription(), 
                         i.getIsAvailable(), i.getDueDate(), 
-                        i.getOS() )
+                        i.getOS())
         return output
-    
+
     def loanCamera(self, assetTag, dueDate):
         success = False
         if len(assetTag) > 0 and len(dueDate) > 0:
-            # Refactor (C): use findCamera()
             for i in self.cameraList:
                 if i.getAssetTag() == assetTag:
                     if i.getIsAvailable() == "Yes":
@@ -105,11 +96,10 @@ class Inventory():
                         success = True
         
         return success
-    
+
     def loanLaptop(self, assetTag, dueDate):
         success = False
         if len(assetTag) > 0 and len(dueDate) > 0:
-            # Refactor (C): use findcamera()
             for i in self.laptopList:
                 if i.getAssetTag() == assetTag:
                     if i.getIsAvailable() == "Yes":
@@ -118,11 +108,10 @@ class Inventory():
                         success = True
         
         return success
-    
+
     def returnCamera(self, assetTag):
         success = False
         if len(assetTag) > 0:
-            # Refactor (C): use findcamera()
             for i in self.cameraList:
                 if i.getAssetTag() == assetTag:
                     if i.getIsAvailable() == "No":
@@ -131,11 +120,10 @@ class Inventory():
                         success = True
         
         return success
-    
+
     def returnLaptop(self, assetTag):
         success = False
         if len(assetTag) > 0:
-            # Refactor (C): use findcamera()
             for i in self.laptopList:
                 if i.getAssetTag() == assetTag:
                     if i.getIsAvailable() == "No":
