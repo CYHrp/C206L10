@@ -142,6 +142,7 @@ class ResourceCenter:
                 if option == 1:
                     # Refactor (F): create and use proper method to display loaned camera.
                     # Don't forget to create a pytest for this new method.
+                    print(self.inventory.getNotAvailableCamera())
                     print("{:<10}{:<30}{:<10}{:<12}{:<10}".format("AssetTag", 
                           "Description", "Available", "Due Date", "Zoom"))
                     for i in self.inventory.cameraList:
@@ -160,6 +161,7 @@ class ResourceCenter:
                 elif option == 2:
                     # Refactor (F): create and use proper method to display loaned Laptop.
                     # Don't forget to create a pytest for this new method.
+                    print(self.inventory.getNotAvailableLaptop())
                     print("{:<10}{:<30}{:<10}{:<12}{:<10}".format("AssetTag", 
                           "Description", "Available", "Due Date", "OS"))
                     for i in self.inventory.laptopList:
