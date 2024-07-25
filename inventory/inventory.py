@@ -145,25 +145,4 @@ class Inventory():
         
         return success
     
-    def getNotAvailableCamera(self):
-        output = ""
-        output += "{: <10}{:<30}{:<10}{:<12}{:<10}\n" , format("AssetTag", "Description", "Available", "Due Date", "Zoom")
-        if len(self.cameralist) == 0:
-            output += "There is no camera to display." 
-        else:
-            for i in self.cameralist:
-                if i. getIsAvailable() == "No":
-                    output += str(i)
-        return output
     
-    def getNotAvailableLaptop(self):
-        output = ""
-        output +="{: <10}{:<30}{:<10}{:<12}{:<10}\n". format ("AssetTag", "Description", "Available", "Due Date", "05")
-        if len(self.laptopList) == 0:
-            output += "There is no laptop to display." 
-        else:
-            for i in self.laptoplist:
-                if i.getIsAvailable() == "No":
-                    output += str(i)
-
-        return output
